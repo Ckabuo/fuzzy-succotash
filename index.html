@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Intern Assessment App — Project Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                DEFAULT: "#3B49DF",
+                hover: "#2f3bc4",
+                soft: "#E8EAFF",
+              },
+            },
+            fontFamily: {
+              sans: ["Inter", "system-ui", "sans-serif"],
+            },
+            animation: {
+              "fade-up": "fadeUp 0.7s ease-out forwards",
+              "fade-in": "fadeIn 0.6s ease-out forwards",
+              float: "float 6s ease-in-out infinite",
+            },
+            keyframes: {
+              fadeUp: {
+                "0%": { opacity: "0", transform: "translateY(20px)" },
+                "100%": { opacity: "1", transform: "translateY(0)" },
+              },
+              fadeIn: {
+                "0%": { opacity: "0" },
+                "100%": { opacity: "1" },
+              },
+              float: {
+                "0%, 100%": { transform: "translateY(0)" },
+                "50%": { transform: "translateY(-6px)" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .stagger-1 {
+        animation-delay: 0.1s;
+      }
+      .stagger-2 {
+        animation-delay: 0.2s;
+      }
+      .stagger-3 {
+        animation-delay: 0.3s;
+      }
+      .stagger-4 {
+        animation-delay: 0.4s;
+      }
+      .stagger-5 {
+        animation-delay: 0.5s;
+      }
+      .stagger-6 {
+        animation-delay: 0.6s;
+      }
+      .opacity-0-animate {
+        opacity: 0;
+      }
+      [data-reveal] {
+        opacity: 0;
+        transform: translateY(18px);
+        transition:
+          opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+          transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      [data-reveal].is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      [data-reveal-pill] {
+        transition-delay: 0.22s;
+      }
+      #intern-carousel-track {
+        will-change: transform;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #intern-carousel-track {
+          will-change: auto;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+        [data-reveal] {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body class="min-h-screen bg-[#F7F8FA] font-sans text-gray-900 antialiased">
+    <!-- Header -->
+    <header
+      class="border-b border-gray-200/80 bg-white/90 backdrop-blur-sm opacity-0-animate animate-fade-in"
+    >
+      <div
+        class="mx-auto flex max-w-5xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8"
+      >
+        <div class="flex items-center gap-3">
+          <div>
+            <p class="text-sm font-semibold text-brand">Intern Assessment</p>
+            <p class="text-xs text-gray-500">MVP · Project hub</p>
+          </div>
+        </div>
+        <span
+          class="rounded-full border border-brand/30 bg-brand-soft px-3 py-1 text-xs font-medium text-brand"
+          >Tutor cohort</span
+        >
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8 lg:py-16">
+      <!-- Hero card -->
+      <section
+        class="relative overflow-hidden rounded-2xl border border-gray-100 bg-white p-6 sm:p-8 lg:p-10 opacity-0-animate animate-fade-up"
+      >
+        <div
+          class="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-brand/5 blur-3xl"
+        ></div>
+        <div class="relative flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+          <div class="max-w-2xl space-y-4">
+            <p class="text-sm font-medium text-gray-500">Welcome to the build</p>
+            <h1
+              class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-[2.25rem] lg:leading-tight"
+            >
+              Intern Assessment App — MVP
+            </h1>
+            <p class="text-base leading-relaxed text-gray-600 sm:text-lg">
+              A focused multiple-choice assessment experience: timed sessions, clear
+              instructions, and question navigation—similar to what your users will see in
+              production.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Resource links -->
+        <div
+          class="relative mt-10 flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4 opacity-0-animate animate-fade-up stagger-2"
+        >
+          <a
+            href="https://www.figma.com/design/byVpethB2NZgpRoe109oQy/Upperlink-Evalution-Test--Copy-?node-id=0-1&p=f&t=0iZ8PNCMnTckfzE7-0"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group inline-flex w-full max-w-sm items-center justify-center gap-2 rounded-xl bg-brand px-5 py-3.5 text-sm font-semibold text-white transition duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-hover sm:w-auto sm:max-w-none sm:min-w-[160px]"
+          >
+          <svg class="h-5 w-5 transition group-hover:scale-110" viewBox="0 0 36 54" xmlns="http://www.w3.org/2000/svg">
+            <!-- Left column -->
+            <circle cx="9" cy="9" r="9" fill="#F24E1E"/>
+            <circle cx="9" cy="27" r="9" fill="#A259FF"/>
+            <circle cx="9" cy="45" r="9" fill="#1ABCFE"/>
+          
+            <!-- Right column -->
+            <circle cx="27" cy="9" r="9" fill="#FF7262"/>
+            <circle cx="27" cy="27" r="9" fill="#0ACF83"/>
+          </svg>
+            Figma
+          </a>
+          <a
+            href="https://github.com/Ckabuo/fuzzy-succotash"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group inline-flex w-full max-w-sm items-center justify-center gap-2 rounded-xl border-2 border-brand bg-white px-5 py-3.5 text-sm font-semibold text-brand transition duration-300 ease-out hover:-translate-y-0.5 hover:bg-brand-soft sm:w-auto sm:max-w-none sm:min-w-[160px]"
+          >
+            <svg class="h-5 w-5 transition group-hover:scale-110" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                fill-rule="evenodd"
+                d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            GitHub
+          </a>
+          <a
+            href="https://YOUR_APP.netlify.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group inline-flex w-full max-w-sm items-center justify-center gap-2 rounded-xl bg-gray-900 px-5 py-3.5 text-sm font-semibold text-white transition duration-300 ease-out hover:-translate-y-0.5 hover:bg-gray-800 sm:w-auto sm:max-w-none sm:min-w-[160px]"
+          >
+            <svg
+              class="h-5 w-5 transition group-hover:scale-110"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
+              />
+            </svg>
+            Netlify
+          </a>
+        </div>
+      </section>
+
+      <!-- Interns -->
+      <section id="intern-section" class="mt-14 sm:mt-16">
+        <div
+          class="mb-8 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between"
+          data-reveal
+        >
+          <div>
+            <p class="text-sm font-medium text-gray-500">Team</p>
+            <h2
+              id="intern-profiles-heading"
+              class="text-2xl font-bold text-gray-900 sm:text-3xl"
+            >
+              Intern profiles
+            </h2>
+          </div>
+          <p class="max-w-md text-sm text-gray-500">
+            Ten interns in a horizontal carousel—one card per step on small screens, two on
+            tablet, three on desktop. Use arrows, dots, or swipe.
+          </p>
+        </div>
+
+        <div class="space-y-6" data-reveal id="intern-carousel-root">
+          <div
+            id="intern-carousel-viewport"
+            class="relative overflow-hidden rounded-2xl outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+            aria-roledescription="carousel"
+            aria-labelledby="intern-profiles-heading"
+          >
+            <div
+              id="intern-carousel-track"
+              class="flex gap-6 transition-[transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+            >
+              <!-- Slide 1 -->
+              <article
+                class="intern-slide group relative shrink-0 overflow-hidden rounded-2xl border border-gray-100 bg-white p-6 transition duration-300 ease-out hover:-translate-y-1 hover:border-brand/20"
+              >
+                <div class="flex items-start gap-4">
+                  <img
+                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=face"
+                    alt="Portrait of Alex Morgan"
+                    width="88"
+                    height="88"
+                    class="h-[5.5rem] w-[5.5rem] shrink-0 rounded-2xl object-cover ring-2 ring-gray-100 transition duration-300 group-hover:ring-brand/30"
+                  />
+                  <div class="min-w-0 flex-1">
+                    <h3 class="text-lg font-semibold text-gray-900">Alex Morgan</h3>
+                    <p class="mt-1 text-sm text-gray-500">Frontend · Assessment UI</p>
+                    <a
+                      href="mailto:alex.morgan@example.com"
+                      class="mt-2 block truncate text-sm font-medium text-brand underline-offset-2 transition hover:text-brand-hover hover:underline"
+                      >alex.morgan@example.com</a
+                    >
+                    <a
+                      href="tel:+15550001111"
+                      class="mt-1 block text-sm text-gray-500 transition hover:text-gray-700"
+                      >+1 (555) 000-1111</a
+                    >
+                  </div>
+                </div>
+              </article>
+              <!-- Slide 2 -->
+              <article
+                class="intern-slide group relative shrink-0 overflow-hidden rounded-2xl border border-gray-100 bg-white p-6 transition duration-300 ease-out hover:-translate-y-1 hover:border-brand/20"
+              >
+                <div class="flex items-start gap-4">
+                  <img
+                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face"
+                    alt="Portrait of Jordan Lee"
+                    width="88"
+                    height="88"
+                    class="h-[5.5rem] w-[5.5rem] shrink-0 rounded-2xl object-cover ring-2 ring-gray-100 transition duration-300 group-hover:ring-brand/30"
+                  />
+                  <div class="min-w-0 flex-1">
+                    <h3 class="text-lg font-semibold text-gray-900">Jordan Lee</h3>
+                    <p class="mt-1 text-sm text-gray-500">Logic · Timer &amp; state</p>
+                    <a
+                      href="mailto:jordan.lee@example.com"
+                      class="mt-2 block truncate text-sm font-medium text-brand underline-offset-2 transition hover:text-brand-hover hover:underline"
+                      >jordan.lee@example.com</a
+                    >
+                    <a
+                      href="tel:+15550002222"
+                      class="mt-1 block text-sm text-gray-500 transition hover:text-gray-700"
+                      >+1 (555) 000-2222</a
+                    >
+                  </div>
+                </div>
+              </article>
+              <!-- Slide 3 -->
+              <article
+                class="intern-slide group relative shrink-0 overflow-hidden rounded-2xl border border-gray-100 bg-white p-6 transition duration-300 ease-out hover:-translate-y-1 hover:border-brand/20"
+              >
+                <div class="flex items-start gap-4">
+                  <img
+                    src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=face"
+                    alt="Portrait of Sam Rivera"
+                    width="88"
+                    height="88"
+                    class="h-[5.5rem] w-[5.5rem] shrink-0 rounded-2xl object-cover ring-2 ring-gray-100 transition duration-300 group-hover:ring-brand/30"
+                  />
+                  <div class="min-w-0 flex-1">
+                    <h3 class="text-lg font-semibold text-gray-900">Sam Rivera</h3>
+                    <p class="mt-1 text-sm text-gray-500">Deploy · Netlify &amp; QA</p>
+                    <a
+                      href="mailto:sam.rivera@example.com"
+                      class="mt-2 block truncate text-sm font-medium text-brand underline-offset-2 transition hover:text-brand-hover hover:underline"
+                      >sam.rivera@example.com</a
+                    >
+                    <a
+                      href="tel:+15550003333"
+                      class="mt-1 block text-sm text-gray-500 transition hover:text-gray-700"
+                      >+1 (555) 000-3333</a
+                    >
+                  </div>
+                </div>
+              </article>
+              <!-- Slide 4 -->
+              <article
+                class="intern-slide group relative shrink-0 overflow-hidden rounded-2xl border border-gray-100 bg-white p-6 transition duration-300 ease-out hover:-translate-y-1 hover:border-brand/20"
+              >
+                <div class="flex items-start gap-4">
+                  <img
+                    src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop&crop=face"
+                    alt="Portrait of Riley Chen"
+                    width="88"
+                    height="88"
+                    class="h-[5.5rem] w-[5.5rem] shrink-0 rounded-2xl object-cover ring-2 ring-gray-100 transition duration-300 group-hover:ring-brand/30"
+                  />
+                  <div class="min-w-0 flex-1">
+                    <h3 class="text-lg font-semibold text-gray-900">Riley Chen</h3>
+                    <p class="mt-1 text-sm text-gray-500">Components · Forms &amp; validation</p>
+                    <a
+                      href="mailto:riley.chen@example.com"
+                      class="mt-2 block truncate text-sm font-medium text-brand underline-offset-2 transition hover:text-brand-hover hover:underline"
+                      >riley.chen@example.com</a
+                    >
+                    <a
+                      href="tel:+15550004444"
+                      class="mt-1 block text-sm text-gray-500 transition hover:text-gray-700"
+                      >+1 (555) 000-4444</a
+                    >
+                  </div>
+                </div>
+              </article>
+              <!-- Slide 5 -->
+              <article
+                class="intern-slide group relative shrink-0 overflow-hidden rounded-2xl border border-gray-100 bg-white p-6 transition duration-300 ease-out hover:-translate-y-1 hover:border-brand/20"
+              >
+                <div class="flex items-start gap-4">
+                  <img
+                    src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=200&h=200&fit=crop&crop=face"
+                    alt="Portrait of Casey Kim"
+                    width="88"
+                    height="88"
+                    class="h-[5.5rem] w-[5.5rem] shrink-0 rounded-2xl object-cover ring-2 ring-gray-100 transition duration-300 group-hover:ring-brand/30"
+                  />
+                  <div class="min-w-0 flex-1">
+                    <h3 class="text-lg font-semibold text-gray-900">Casey Kim</h3>
+                    <p class="mt-1 text-sm text-gray-500">Accessibility · Semantic HTML</p>
+                    <a
+                      href="mailto:casey.kim@example.com"
+                      class="mt-2 block truncate text-sm font-medium text-brand underline-offset-2 transition hover:text-brand-hover hover:underline"
+                      >casey.kim@example.com</a
+                    >
+                    <a
+                      href="tel:+15550005555"
+                      class="mt-1 block text-sm text-gray-500 transition hover:text-gray-700"
+                      >+1 (555) 000-5555</a
+                    >
+                  </div>
+                </div>
+              </article>
+              <!-- Slide 6 -->
+              <article
+                class="intern-slide group relative shrink-0 overflow-hidden rounded-2xl border border-gray-100 bg-white p-6 transition duration-300 ease-out hover:-translate-y-1 hover:border-brand/20"
+              >
+                <div class="flex items-start gap-4">
+                  <img
+                    src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=face"
+                    alt="Portrait of Taylor Brooks"
+                    width="88"
+                    height="88"
+                    class="h-[5.5rem] w-[5.5rem] shrink-0 rounded-2xl object-cover ring-2 ring-gray-100 transition duration-300 group-hover:ring-brand/30"
+                  />
+                  <div class="min-w-0 flex-1">
+                    <h3 class="text-lg font-semibold text-gray-900">Taylor Brooks</h3>
+                    <p class="mt-1 text-sm text-gray-500">Styling · Tailwind &amp; layout</p>
+                    <a
+                      href="mailto:taylor.brooks@example.com"
+                      class="mt-2 block truncate text-sm font-medium text-brand underline-offset-2 transition hover:text-brand-hover hover:underline"
+                      >taylor.brooks@example.com</a
+                    >
+                    <a
+                      href="tel:+15550006666"
+                      class="mt-1 block text-sm text-gray-500 transition hover:text-gray-700"
+                      >+1 (555) 000-6666</a
+                    >
+                  </div>
+                </div>
+              </article>
+              <!-- Slide 7 -->
+              <article
+                class="intern-slide group relative shrink-0 overflow-hidden rounded-2xl border border-gray-100 bg-white p-6 transition duration-300 ease-out hover:-translate-y-1 hover:border-brand/20"
+              >
+                <div class="flex items-start gap-4">
+                  <img
+                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face"
+                    alt="Portrait of Morgan Quinn"
+                    width="88"
+                    height="88"
+                    class="h-[5.5rem] w-[5.5rem] shrink-0 rounded-2xl object-cover ring-2 ring-gray-100 transition duration-300 group-hover:ring-brand/30"
+                  />
+                  <div class="min-w-0 flex-1">
+                    <h3 class="text-lg font-semibold text-gray-900">Morgan Quinn</h3>
+                    <p class="mt-1 text-sm text-gray-500">API · Mock data &amp; fetch</p>
+                    <a
+                      href="mailto:morgan.quinn@example.com"
+                      class="mt-2 block truncate text-sm font-medium text-brand underline-offset-2 transition hover:text-brand-hover hover:underline"
+                      >morgan.quinn@example.com</a
+                    >
+                    <a
+                      href="tel:+15550007777"
+                      class="mt-1 block text-sm text-gray-500 transition hover:text-gray-700"
+                      >+1 (555) 000-7777</a
+                    >
+                  </div>
+                </div>
+              </article>
+              <!-- Slide 8 -->
+              <article
+                class="intern-slide group relative shrink-0 overflow-hidden rounded-2xl border border-gray-100 bg-white p-6 transition duration-300 ease-out hover:-translate-y-1 hover:border-brand/20"
+              >
+                <div class="flex items-start gap-4">
+                  <img
+                    src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=200&h=200&fit=crop&crop=face"
+                    alt="Portrait of Jamie Park"
+                    width="88"
+                    height="88"
+                    class="h-[5.5rem] w-[5.5rem] shrink-0 rounded-2xl object-cover ring-2 ring-gray-100 transition duration-300 group-hover:ring-brand/30"
+                  />
+                  <div class="min-w-0 flex-1">
+                    <h3 class="text-lg font-semibold text-gray-900">Jamie Park</h3>
+                    <p class="mt-1 text-sm text-gray-500">UX copy · Instructions &amp; errors</p>
+                    <a
+                      href="mailto:jamie.park@example.com"
+                      class="mt-2 block truncate text-sm font-medium text-brand underline-offset-2 transition hover:text-brand-hover hover:underline"
+                      >jamie.park@example.com</a
+                    >
+                    <a
+                      href="tel:+15550008888"
+                      class="mt-1 block text-sm text-gray-500 transition hover:text-gray-700"
+                      >+1 (555) 000-8888</a
+                    >
+                  </div>
+                </div>
+              </article>
+              <!-- Slide 9 -->
+              <article
+                class="intern-slide group relative shrink-0 overflow-hidden rounded-2xl border border-gray-100 bg-white p-6 transition duration-300 ease-out hover:-translate-y-1 hover:border-brand/20"
+              >
+                <div class="flex items-start gap-4">
+                  <img
+                    src="https://images.unsplash.com/photo-1463453091185-61582044d556?w=200&h=200&fit=crop&crop=face"
+                    alt="Portrait of Drew Patel"
+                    width="88"
+                    height="88"
+                    class="h-[5.5rem] w-[5.5rem] shrink-0 rounded-2xl object-cover ring-2 ring-gray-100 transition duration-300 group-hover:ring-brand/30"
+                  />
+                  <div class="min-w-0 flex-1">
+                    <h3 class="text-lg font-semibold text-gray-900">Drew Patel</h3>
+                    <p class="mt-1 text-sm text-gray-500">Testing · Flows &amp; edge cases</p>
+                    <a
+                      href="mailto:drew.patel@example.com"
+                      class="mt-2 block truncate text-sm font-medium text-brand underline-offset-2 transition hover:text-brand-hover hover:underline"
+                      >drew.patel@example.com</a
+                    >
+                    <a
+                      href="tel:+15550009999"
+                      class="mt-1 block text-sm text-gray-500 transition hover:text-gray-700"
+                      >+1 (555) 000-9999</a
+                    >
+                  </div>
+                </div>
+              </article>
+              <!-- Slide 10 -->
+              <article
+                class="intern-slide group relative shrink-0 overflow-hidden rounded-2xl border border-gray-100 bg-white p-6 transition duration-300 ease-out hover:-translate-y-1 hover:border-brand/20"
+              >
+                <div class="flex items-start gap-4">
+                  <img
+                    src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop&crop=face"
+                    alt="Portrait of Avery Fox"
+                    width="88"
+                    height="88"
+                    class="h-[5.5rem] w-[5.5rem] shrink-0 rounded-2xl object-cover ring-2 ring-gray-100 transition duration-300 group-hover:ring-brand/30"
+                  />
+                  <div class="min-w-0 flex-1">
+                    <h3 class="text-lg font-semibold text-gray-900">Avery Fox</h3>
+                    <p class="mt-1 text-sm text-gray-500">Docs · README &amp; handoff</p>
+                    <a
+                      href="mailto:avery.fox@example.com"
+                      class="mt-2 block truncate text-sm font-medium text-brand underline-offset-2 transition hover:text-brand-hover hover:underline"
+                      >avery.fox@example.com</a
+                    >
+                    <a
+                      href="tel:+15550001010"
+                      class="mt-1 block text-sm text-gray-500 transition hover:text-gray-700"
+                      >+1 (555) 000-1010</a
+                    >
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="flex w-full justify-center px-2">
+            <div
+              id="intern-carousel-dots"
+              class="flex max-w-full flex-wrap justify-center gap-2 py-1"
+              role="group"
+              aria-label="Slide indicators"
+            ></div>
+          </div>
+          <p
+            id="intern-carousel-status"
+            class="sr-only"
+            role="status"
+            aria-live="polite"
+            aria-atomic="true"
+          ></p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-gray-200/80 bg-white/80 py-6 text-center text-xs text-gray-400">
+      <p>Intern Assessment · Tutor project hub</p>
+    </footer>
+
+    <script>
+      (function () {
+        var nodes = document.querySelectorAll("[data-reveal]");
+        if (!nodes.length) return;
+        if (
+          !window.matchMedia ||
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ) {
+          nodes.forEach(function (el) {
+            el.classList.add("is-visible");
+          });
+          return;
+        }
+        if (!("IntersectionObserver" in window)) {
+          nodes.forEach(function (el) {
+            el.classList.add("is-visible");
+          });
+          return;
+        }
+        var io = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (!entry.isIntersecting) return;
+              entry.target.classList.add("is-visible");
+              io.unobserve(entry.target);
+            });
+          },
+          { rootMargin: "0px 0px -8% 0px", threshold: 0.08 }
+        );
+        nodes.forEach(function (el) {
+          io.observe(el);
+        });
+      })();
+    </script>
+    <script>
+      (function () {
+        var viewport = document.getElementById("intern-carousel-viewport");
+        var track = document.getElementById("intern-carousel-track");
+        var root = document.getElementById("intern-carousel-root");
+        var dotsRoot = document.getElementById("intern-carousel-dots");
+        var statusEl = document.getElementById("intern-carousel-status");
+        if (!viewport || !track || !dotsRoot) return;
+
+        var slides = track.querySelectorAll(".intern-slide");
+        var n = slides.length;
+        var GAP = 24;
+        var currentIndex = 0;
+        var reduceMotion =
+          window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var dotButtons = [];
+        var AUTO_MS = 4500;
+        var autoTimer = null;
+
+        function getPerView() {
+          var w = window.innerWidth;
+          if (w >= 1024) return 3;
+          if (w >= 768) return 2;
+          return 1;
+        }
+
+        function getMaxIndex() {
+          var pv = getPerView();
+          return Math.max(0, n - pv);
+        }
+
+        function slideWidth() {
+          var pv = getPerView();
+          var inner = viewport.clientWidth;
+          return (inner - (pv - 1) * GAP) / pv;
+        }
+
+        function applyLayout() {
+          var w = slideWidth();
+          for (var i = 0; i < slides.length; i++) {
+            slides[i].style.flex = "0 0 " + w + "px";
+            slides[i].style.width = w + "px";
+          }
+          track.style.gap = GAP + "px";
+          setTransform(false);
+        }
+
+        function setTransform(animate) {
+          if (reduceMotion) {
+            track.style.transitionDuration = "0ms";
+          } else if (!animate) {
+            track.style.transitionDuration = "0ms";
+          } else {
+            track.style.transitionDuration = "";
+          }
+          var w = slideWidth();
+          var x = currentIndex * (w + GAP);
+          track.style.transform = "translate3d(" + -x + "px,0,0)";
+          if (!animate && !reduceMotion) {
+            requestAnimationFrame(function () {
+              track.style.transitionDuration = "";
+            });
+          }
+          updateChrome();
+        }
+
+        function centerIndexForDot(i) {
+          var pv = getPerView();
+          var maxI = getMaxIndex();
+          var half = Math.floor((pv - 1) / 2);
+          return Math.max(0, Math.min(i - half, maxI));
+        }
+
+        function goTo(index, animate) {
+          var maxI = getMaxIndex();
+          currentIndex = Math.max(0, Math.min(index, maxI));
+          setTransform(animate !== false);
+        }
+
+        function updateChrome() {
+          var pv = getPerView();
+          var first = currentIndex + 1;
+          var last = Math.min(currentIndex + pv, n);
+          if (statusEl) {
+            statusEl.textContent =
+              "Showing interns " + first + " to " + last + " of " + n + ". Carousel advances automatically.";
+          }
+
+          for (var d = 0; d < dotButtons.length; d++) {
+            var inView = d >= currentIndex && d < currentIndex + pv;
+            var isLead = d === currentIndex;
+            dotButtons[d].setAttribute("aria-current", isLead ? "true" : "false");
+            dotButtons[d].className =
+              "h-2.5 min-w-[0.625rem] rounded-full transition-all duration-300 " +
+              (isLead
+                ? "w-8 bg-brand"
+                : inView
+                  ? "w-2.5 bg-brand/50 ring-2 ring-brand/20"
+                  : "w-2.5 bg-gray-300 hover:bg-gray-400");
+          }
+        }
+
+        function buildDots() {
+          dotsRoot.innerHTML = "";
+          dotButtons = [];
+          for (var i = 0; i < n; i++) {
+            (function (idx) {
+              var b = document.createElement("button");
+              b.type = "button";
+              b.setAttribute("aria-label", "Go to intern " + (idx + 1));
+              b.className =
+                "h-2.5 w-2.5 rounded-full bg-gray-300 transition-all duration-300 hover:bg-gray-400";
+              b.addEventListener("click", function () {
+                goTo(centerIndexForDot(idx), true);
+                restartAuto();
+              });
+              dotsRoot.appendChild(b);
+              dotButtons.push(b);
+            })(i);
+          }
+        }
+
+        function pauseAuto() {
+          if (autoTimer) {
+            clearInterval(autoTimer);
+            autoTimer = null;
+          }
+        }
+
+        function tickAuto() {
+          var maxI = getMaxIndex();
+          if (currentIndex >= maxI) {
+            goTo(0, true);
+          } else {
+            goTo(currentIndex + 1, true);
+          }
+        }
+
+        function startAuto() {
+          pauseAuto();
+          if (reduceMotion) return;
+          autoTimer = setInterval(tickAuto, AUTO_MS);
+        }
+
+        function restartAuto() {
+          startAuto();
+        }
+
+        if (root) {
+          root.addEventListener("mouseenter", pauseAuto);
+          root.addEventListener("mouseleave", startAuto);
+          root.addEventListener("focusin", pauseAuto);
+          root.addEventListener("focusout", function () {
+            setTimeout(function () {
+              if (!root.contains(document.activeElement)) startAuto();
+            }, 0);
+          });
+        }
+
+        viewport.addEventListener("keydown", function (e) {
+          if (e.key === "ArrowLeft") {
+            e.preventDefault();
+            goTo(currentIndex - 1, true);
+            restartAuto();
+          } else if (e.key === "ArrowRight") {
+            e.preventDefault();
+            goTo(currentIndex + 1, true);
+            restartAuto();
+          }
+        });
+
+        var touchStartX = null;
+        track.addEventListener(
+          "touchstart",
+          function (e) {
+            pauseAuto();
+            touchStartX = e.changedTouches[0].screenX;
+          },
+          { passive: true }
+        );
+        track.addEventListener(
+          "touchend",
+          function (e) {
+            if (touchStartX != null) {
+              var dx = e.changedTouches[0].screenX - touchStartX;
+              if (dx < -48) goTo(currentIndex + 1, true);
+              else if (dx > 48) goTo(currentIndex - 1, true);
+            }
+            touchStartX = null;
+            setTimeout(startAuto, 2500);
+          },
+          { passive: true }
+        );
+
+        var resizeTimer;
+        window.addEventListener("resize", function () {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(function () {
+            var maxI = getMaxIndex();
+            if (currentIndex > maxI) currentIndex = maxI;
+            applyLayout();
+            restartAuto();
+          }, 120);
+        });
+
+        document.addEventListener("visibilitychange", function () {
+          if (document.hidden) pauseAuto();
+          else startAuto();
+        });
+
+        buildDots();
+        currentIndex = 0;
+        applyLayout();
+        startAuto();
+
+        viewport.tabIndex = 0;
+        viewport.setAttribute("role", "region");
+      })();
+    </script>
+  </body>
+</html>
