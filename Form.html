@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applicant Form</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+     <header class="navbar">
+        <div class="logo">
+            <img src="https://res.cloudinary.com/dr2qffjqb/image/upload/v1776185690/1cf3ba341db0dbd4bfeae51efadb76d7e01dadba_yvwb9k.png" alt="logo">
+        </div>
+        <div class="nav-right">Applicant</div>
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <h2>Applicant Form Details</h2>
+
+            <form>
+                <div class="input-group">
+                    <label>Full Name</label>
+                    <div class="input-box">
+                        <span class="material-symbols-outlined">person</span>
+                        <input type="text" placeholder="Input your full name">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Email Address</label>
+                    <div class="input-box">
+                        <span class="material-symbols-outlined">mail</span>
+                        <input type="email" placeholder="Input your email">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Phone Number</label>
+                    <div class="input-box">
+                        <span class="material-symbols-outlined">call</span>
+                        <input type="tel" placeholder="Input your phone number">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Select a department</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="dept">
+                            Frontend development
+                        </label>
+                        <label>
+                            <input type="radio" name="dept" checked>
+                            Product Design
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn">Submit</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
