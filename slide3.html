@@ -31,10 +31,6 @@
       #form br {
         display: none;
       }
-      .nav-buttons {
-        transition: all 0.3s ease;
-        transform: translateY(-2px);
-      }
       .btn.btn-primary {
         transition: all 0.3s ease;
       }
@@ -45,6 +41,7 @@
     <title>Document</title>
   </head>
   <body class="flex flex-col min-h-screen">
+    <!-- Nav -->
     <div
       class="nav flex justify-between items-center w-full max-w-[1440px] mx-auto px-[120px] py-[10px] shrink-0 border-b border-slate-200"
     >
@@ -54,46 +51,41 @@
         class="w-[180px]"
       />
       <p
-        id="nav-word"
-        class="text-2xl font-normal leading-[140%] text-black tracking-normal text-left w-[185px] h-[42px] py-1 px-[10px] gap-[10px]"
+        class="text-2xl font-normal leading-[140%] text-black w-[185px] h-[42px] py-1 px-[10px]"
       >
         Applicant
       </p>
     </div>
 
+    <!-- Main -->
     <div
       class="container flex flex-col items-center justify-center w-full max-w-[1440px] mx-auto px-[120px] py-3 gap-2 flex-1 min-h-0"
     >
+      <!-- Question -->
       <div class="question-block w-full max-w-[600px]">
         <p
-          class="select text-base font-normal leading-[150%] text-[rgba(156,149,149,1)] mb-1"
+          class="text-base font-normal leading-[150%] text-[rgba(156,149,149,1)] mb-1"
         >
           Select the correct option from the following
         </p>
-        <p
-          class="prop text-2xl font-normal text-black"
-          style="font-family: &quot;Inter&quot;, sans-serif"
-        >
+        <p class="text-2xl font-normal text-black">
           Which CSS property is used to change the text color of an element?
         </p>
       </div>
 
+      <!-- Options -->
       <div id="form" class="w-full max-w-[600px]">
         <form>
           <label
             class="flex items-center gap-3 py-[10px] text-base cursor-pointer"
           >
-            <input type="radio" name="question" value="font-style" />
-            font-style </label
-          ><br />
-
+            <input type="radio" name="question" value="font-style" /> font-style
+          </label>
           <label
             class="flex items-center gap-3 py-[10px] text-base cursor-pointer"
           >
-            <input type="radio" name="question" value="color" />
-            color </label
-          ><br />
-
+            <input type="radio" name="question" value="color" /> color
+          </label>
           <label
             class="flex items-center gap-3 py-[10px] text-base cursor-pointer"
           >
@@ -102,26 +94,23 @@
               name="question"
               value="background-color-style"
             />
-            background-color-style </label
-          ><br />
-
+            background-color-style
+          </label>
           <label
             class="flex items-center gap-3 py-[10px] text-base cursor-pointer"
           >
-            <input type="radio" name="question" value="text-align" />
-            text-align
+            <input type="radio" name="question" value="text-align" /> text-align
           </label>
         </form>
       </div>
 
-      <div class="nav-buttons flex justify-between w-full max-w-[600px] mb-4">
+      <!-- Previous / Next -->
+      <div class="flex justify-between w-full max-w-[600px] mb-4">
         <button
           class="btn flex items-center gap-2 bg-[#3b5bdb] hover:bg-[#2f4cc4] text-white border-none rounded-lg px-5 py-[10px] text-[15px] font-medium cursor-pointer"
         >
-          <span class="material-symbols-outlined">arrow_back_ios</span>
-          Previous
+          <span class="material-symbols-outlined">arrow_back_ios</span> Previous
         </button>
-
         <button
           class="btn flex items-center gap-2 bg-[#3b5bdb] hover:bg-[#2f4cc4] text-white border-none rounded-lg px-5 py-[10px] text-[15px] font-medium cursor-pointer"
         >
@@ -130,57 +119,170 @@
       </div>
 
       <!-- Pagination -->
-      <div class="pagination-wrapper w-full max-w-[600px] p-0">
-        <div
-          class="page-numbers flex flex-wrap gap-[6px]"
-          id="pageNumbers"
-        ></div>
+      <div class="w-full max-w-[600px]">
+        <div class="flex flex-wrap gap-[10px]">
+          <a
+            href="#"
+            class="w-9 h-9 bg-[#e8ecf7] hover:bg-[#c5cef0] text-black rounded-md text-sm flex items-center justify-center"
+            >1</a
+          >
+          <a
+            href="#"
+            class="w-9 h-9 bg-[#e8ecf7] hover:bg-[#c5cef0] text-black rounded-md text-sm flex items-center justify-center"
+            >2</a
+          >
+          <a
+            href="#"
+            class="w-9 h-9 bg-[#e8ecf7] hover:bg-[#c5cef0] text-black rounded-md text-sm flex items-center justify-center"
+            >3</a
+          >
+          <a
+            href="#"
+            class="w-9 h-9 bg-[#e8ecf7] hover:bg-[#c5cef0] text-black rounded-md text-sm flex items-center justify-center"
+            >4</a
+          >
+          <a
+            href="#"
+            class="w-9 h-9 bg-[#e8ecf7] hover:bg-[#c5cef0] text-black rounded-md text-sm flex items-center justify-center"
+            >5</a
+          >
+          <a
+            href="#"
+            class="w-9 h-9 bg-[#e8ecf7] hover:bg-[#c5cef0] text-black rounded-md text-sm flex items-center justify-center"
+            >6</a
+          >
+          <a
+            href="#"
+            class="w-9 h-9 bg-[#e8ecf7] hover:bg-[#c5cef0] text-black rounded-md text-sm flex items-center justify-center"
+            >7</a
+          >
+          <a
+            href="#"
+            class="w-9 h-9 bg-[#e8ecf7] hover:bg-[#c5cef0] text-black rounded-md text-sm flex items-center justify-center"
+            >8</a
+          >
+          <a
+            href="#"
+            class="w-9 h-9 bg-[#e8ecf7] hover:bg-[#c5cef0] text-black rounded-md text-sm flex items-center justify-center"
+            >9</a
+          >
+          <a
+            href="#"
+            class="w-9 h-9 bg-[#e8ecf7] hover:bg-[#c5cef0] text-black rounded-md text-sm flex items-center justify-center"
+            >10</a
+          >
+          <a
+            href="#"
+            class="w-9 h-9 bg-[#e8ecf7] hover:bg-[#c5cef0] text-black rounded-md text-sm flex items-center justify-center"
+            >11</a
+          >
+          <a
+            href="#"
+            class="w-9 h-9 bg-[#e8ecf7] hover:bg-[#c5cef0] text-black rounded-md text-sm flex items-center justify-center"
+            >12</a
+          >
+          <a
+            href="#"
+            class="w-9 h-9 bg-[#e8ecf7] hover:bg-[#c5cef0] text-black rounded-md text-sm flex items-center justify-center"
+            >13</a
+          >
+          <a
+            href="#"
+            class="w-9 h-9 bg-[#e8ecf7] hover:bg-[#c5cef0] text-black rounded-md text-sm flex items-center justify-center"
+            >14</a
+          >
+          <a
+            href="#"
+            class="w-9 h-9 bg-[#e8ecf7] hover:bg-[#c5cef0] text-black rounded-md text-sm flex items-center justify-center"
+            >15</a
+          >
+          <a
+            href="#"
+            class="w-9 h-9 bg-[#e8ecf7] hover:bg-[#c5cef0] text-black rounded-md text-sm flex items-center justify-center"
+            >16</a
+          >
+          <a
+            href="#"
+            class="w-9 h-9 bg-[#e8ecf7] hover:bg-[#c5cef0] text-black rounded-md text-sm flex items-center justify-center"
+            >17</a
+          >
+          <a
+            href="#"
+            class="w-9 h-9 bg-[#e8ecf7] hover:bg-[#c5cef0] text-black rounded-md text-sm flex items-center justify-center"
+            >18</a
+          >
+          <a
+            href="#"
+            class="w-9 h-9 bg-[#e8ecf7] hover:bg-[#c5cef0] text-black rounded-md text-sm flex items-center justify-center"
+            >19</a
+          >
+          <a
+            href="#"
+            class="w-9 h-9 bg-[#e8ecf7] hover:bg-[#c5cef0] text-black rounded-md text-sm flex items-center justify-center"
+            >20</a
+          >
+          <a
+            href="#"
+            class="w-9 h-9 bg-[#e8ecf7] hover:bg-[#c5cef0] text-black rounded-md text-sm flex items-center justify-center"
+            >21</a
+          >
+          <a
+            href="#"
+            class="w-9 h-9 bg-[#e8ecf7] hover:bg-[#c5cef0] text-black rounded-md text-sm flex items-center justify-center"
+            >22</a
+          >
+          <a
+            href="#"
+            class="w-9 h-9 bg-[#e8ecf7] hover:bg-[#c5cef0] text-black rounded-md text-sm flex items-center justify-center"
+            >23</a
+          >
+          <a
+            href="#"
+            class="w-9 h-9 bg-[#e8ecf7] hover:bg-[#c5cef0] text-black rounded-md text-sm flex items-center justify-center"
+            >24</a
+          >
+          <a
+            href="#"
+            class="w-9 h-9 bg-[#e8ecf7] hover:bg-[#c5cef0] text-black rounded-md text-sm flex items-center justify-center"
+            >25</a
+          >
+          <a
+            href="#"
+            class="w-9 h-9 bg-[#e8ecf7] hover:bg-[#c5cef0] text-black rounded-md text-sm flex items-center justify-center"
+            >26</a
+          >
+          <a
+            href="#"
+            class="w-9 h-9 bg-[#e8ecf7] hover:bg-[#c5cef0] text-black rounded-md text-sm flex items-center justify-center"
+            >27</a
+          >
+          <a
+            href="#"
+            class="w-9 h-9 bg-[#e8ecf7] hover:bg-[#c5cef0] text-black rounded-md text-sm flex items-center justify-center"
+            >28</a
+          >
+          <a
+            href="#"
+            class="w-9 h-9 bg-[#e8ecf7] hover:bg-[#c5cef0] text-black rounded-md text-sm flex items-center justify-center"
+            >29</a
+          >
+          <a
+            href="#"
+            class="w-9 h-9 bg-[#e8ecf7] hover:bg-[#c5cef0] text-black rounded-md text-sm flex items-center justify-center"
+            >30</a
+          >
+        </div>
       </div>
 
-      <div class="submit-container flex justify-end w-full max-w-[600px] mt-0">
+      <!-- Submit -->
+      <div class="flex justify-end w-full max-w-[600px] mt-0">
         <button
           type="submit"
           class="btn btn-primary flex justify-center items-center w-[200px] h-12 bg-[#3641e1] hover:bg-[#2a33b5] text-white border-none rounded-lg font-semibold text-lg cursor-pointer shadow-md"
-          id="submit-btn"
         >
           Submit
         </button>
       </div>
     </div>
-
-    <script>
-      let currentPage = 1;
-      const totalPages = 30;
-
-      function renderPages() {
-        const container = document.getElementById("pageNumbers");
-        container.innerHTML = "";
-
-        for (let i = 1; i <= totalPages; i++) {
-          const btn = document.createElement("button");
-          btn.className =
-            "page-btn w-9 h-9 border-none rounded-md text-sm cursor-pointer " +
-            (i === currentPage
-              ? "active bg-[#4361ee] text-white"
-              : "bg-[#e8ecf7] hover:bg-[#c5cef0] text-black");
-          btn.textContent = i;
-          btn.onclick = () => {
-            currentPage = i;
-            renderPages();
-          };
-          container.appendChild(btn);
-        }
-      }
-
-      function changePage(direction) {
-        currentPage = Math.min(
-          Math.max(1, currentPage + direction),
-          totalPages,
-        );
-        renderPages();
-      }
-
-      renderPages();
-    </script>
   </body>
 </html>
